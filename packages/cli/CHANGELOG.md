@@ -1,5 +1,15 @@
 # @computesdk/cli
 
+## 1.0.14
+
+### Patch Changes
+
+- 9e17bee: `compute actions dispatch` gains `--max-bid <usd>` and `--max-bid-per <second|minute|hour>`: an optional per-dispatch market price ceiling sent as `maxPriceUsd`/`maxPricePer`. Jobs that can't be filled at the price fall through to the next provider-order entry.
+- 5cfe41c: cli(market): refuse `market credential connect` to untrusted hosts — the credential field metadata a host returns selects which local env vars get read and posted back, so `--allow-untrusted-host` no longer extends to it (same guard as vault values)
+- abdaf3e: `compute market` — the sell side of the compute market, for orgs the platform flags `market_provider` (same org API key as `compute actions`). Post listings with `market sell --price` (`--per` defaults to second), manage them with `listings`/`price`/`pause`/`resume`/`withdraw`, read the book with `market book`, payouts with `market settlements`, seller identity with `market status`, and connect the executor credential listings fill under with `market credential connect` (fields resolved from `<PROVIDER>_<FIELD>` env vars, e.g. `TENSORLAKE_API_KEY`).
+- Updated dependencies [f1a8578]
+  - computesdk@4.1.9
+
 ## 1.0.13
 
 ### Patch Changes
